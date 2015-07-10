@@ -1,0 +1,24 @@
+﻿@model PLCG.Models.Company
+
+@{
+    ViewBag.Title = "Admin: Create Company";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary()
+
+    <div class="form-group">
+        <label>Company Name:</label>
+        @Html.TextBoxFor(c => c.CompanyName, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Company Address:</label>
+        @Html.TextBoxFor(c => c.CompanyAddress, new { @class = "form-control" })
+    </div>
+
+    <div class="panel-footer">
+        <input type="submit" value="Save" class="btn btn-primary" />
+    </div>
+}

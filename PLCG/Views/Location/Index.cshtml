@@ -1,0 +1,42 @@
+﻿@model IEnumerable<PLCG.Models.Location>
+@{
+    ViewBag.Title = "Admin Locations";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<body>
+    <div class="panel-body">
+        <table class="table table-striped table-condensed table-bordered">
+            <tr>
+                <th>Location ID</th>
+                <th>Location City</th>
+                <th>Location Zip</th>
+                <th>Location State</th>
+                <th>Location Country</th>
+                <th>Location Radius</th>
+                <th>Remove</th>
+            </tr>
+            @foreach (var location in Model)
+            {
+                <tr>
+                    <td>@location.LocationID</td>
+                    <td>@location.LocationCity</td>
+                    <td>@location.LocationZip</td>
+                    <td>@location.LocationState</td>
+                    <td>@location.LocationCountry</td>
+                    <td>@location.LocationRadius</td>
+                    <td>
+                        @using (Html.BeginForm("Delete", "Location"))
+                        {
+                            @Html.Hidden("LocationID", @location.LocationID)
+                            <input class="btn btn-sm btn-warning" type="submit" value="Remove" />
+                        }
+                    </td>
+
+                </tr>
+            }
+        </table>
+        @Html.ActionLink("Add Location", "Create", "Location", null, new { @class = "btn btn-default" })
+    </div>
+</body>

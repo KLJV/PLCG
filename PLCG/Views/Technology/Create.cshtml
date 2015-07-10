@@ -1,0 +1,25 @@
+﻿@model PLCG.Models.Technology
+
+@{
+    ViewBag.Title = "Admin: Create Technology";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary()
+
+    <div class="form-group">
+        <label>Technology Name:</label>
+        @Html.TextBoxFor(t => t.TechnologyName, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Technology Type:</label>
+        @Html.TextBoxFor(t => t.TechnologyType, new { @class = "form-control" })
+
+        <div class="panel-footer">
+            <input type="submit" value="Save" class="btn btn-primary" />
+        </div>
+    </div>
+}
+

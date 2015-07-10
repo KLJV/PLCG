@@ -1,0 +1,39 @@
+﻿@model IEnumerable<PLCG.Models.Company>
+
+@{
+    ViewBag.Title = "Admin";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<body>
+    <div class="panel-body">
+        <table class="table table-striped table-condensed table-bordered">
+            <tr>
+                <th>Company ID</th>
+                <th>Company Name</th>
+                <th>Company Address</th>
+                <th>Location ID</th>
+                <th>Technology ID</th>
+                <th>Remove</th>
+            </tr>
+            @foreach (var company in Model)
+            {
+                <tr>
+                    <td>@company.CompanyID</td>
+                    <td>@company.CompanyName</td>
+                    <td>@company.CompanyAddress</td>
+                    <td>@company.CompanyLocationID</td>
+                    <td>@company.CompanyTechnologyID</td>
+                    <td>
+                        @using (Html.BeginForm("Delete", "Company"))
+                        {
+                            @Html.Hidden("CompanyID", @company.CompanyID)
+                            <input class="btn btn-sm btn-warning" type="submit" value="Remove" />
+                        }
+                    </td>
+                </tr>
+            }
+        </table>
+        @Html.ActionLink("Add Company", "Create", "Company", null, new { @class = "btn btn-default" })
+    </div>
+</body>

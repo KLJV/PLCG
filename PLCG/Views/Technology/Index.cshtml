@@ -1,0 +1,35 @@
+﻿@model IEnumerable<PLCG.Models.Technology>
+
+@{
+    ViewBag.Title = "Admin";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<body>
+    <div class="panel-body">
+        <table class="table table-striped table-condensed table-bordered">
+            <tr>
+                <th>Technology ID</th>
+                <th>Technology Name</th>
+                <th>Technology Type</th>
+                <th>Remove</th>
+            </tr>
+            @foreach (var technology in Model)
+            {
+                <tr>
+                    <th>@technology.TechnologyID</th>
+                    <th>@technology.TechnologyName</th>
+                    <th>@technology.TechnologyType</th>
+                    <td>
+                        @using (Html.BeginForm("Delete", "Technology"))
+                        {
+                            @Html.Hidden("TechnologyID", @technology.TechnologyID)
+                            <input class="btn btn-sm btn-warning" type="submit" value="Remove" />
+                        }
+                    </td>
+                </tr>
+            }
+        </table>
+        @Html.ActionLink("Add Technology", "Create", "Technology", null, new { @class = "btn btn-default" })
+    </div>
+</body>

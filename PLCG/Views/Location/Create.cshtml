@@ -1,0 +1,40 @@
+﻿@model PLCG.Models.Location
+
+@{
+    ViewBag.Title = "Admin: Create";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary()
+
+    <div class="form-group">
+        <label>Location City</label>
+        @Html.TextBoxFor(l => l.LocationCity, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Location Country</label>
+        @Html.TextBoxFor(l => l.LocationCountry, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Location State</label>
+        @Html.TextBoxFor(l => l.LocationState, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Location Zip Code</label>
+        @Html.TextBoxFor(l => l.LocationZip, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Location Radius</label>
+        @Html.TextBoxFor(l => l.LocationRadius, new { @class = "form-control" })
+    </div>
+
+    <div class="panel-footer">
+        <input type="submit" value="Save" class="btn btn-primary" />
+    </div>
+}
+
